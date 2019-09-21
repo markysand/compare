@@ -10,7 +10,7 @@ import (
 /*SliceUnsorted will check whether two slices have the
 same length and the same set of members. This can be useful
 for writing tests/validation. An error will be returned if
-either argument is ont a slice*/
+either argument is not a slice*/
 func SliceUnsorted(a, b interface{}) (bool, error) {
 	if reflect.TypeOf(a).Kind() != reflect.Slice {
 		return false, errors.New(fmt.Sprint("Arg <a> is not a slice", a))
