@@ -18,19 +18,19 @@ func TestSliceUnsorted(t *testing.T) {
 		{
 			"String slices",
 			[]string{
-				"alfa", "beta",
+				"alpha", "beta",
 			},
 			[]string{
-				"beta", "alfa",
+				"beta", "alpha",
 			},
 			true,
 			false,
 		},
 		{
 			"Not slice",
-			"alfa beta",
+			"alpha beta",
 			[]string{
-				"alfa", "beta",
+				"alpha", "beta",
 			},
 			false,
 			true,
