@@ -1,3 +1,4 @@
+/*Package compare has a function for comparing unsorted slices*/
 package compare
 
 import (
@@ -8,8 +9,7 @@ import (
 
 // SliceUnsorted will check whether two slices have the
 // same length and the same set of members. This can be useful
-// for writing tests, comparing search results of unwieldy objects that
-// are difficult to sort.
+// for writing tests or any other complicated slice comparison.
 func SliceUnsorted(a, b interface{}) (bool, error) {
 	if reflect.TypeOf(a).Kind() != reflect.Slice {
 		return false, errors.New(fmt.Sprint("Arg a not slice", a))

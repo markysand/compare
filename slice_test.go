@@ -113,6 +113,16 @@ func TestSliceUnsorted(t *testing.T) {
 			},
 			true,
 			false,
+		}, {
+			"Different length",
+			[]string{
+				"foo", "bar", "jedi", "yoda", "jedi",
+			},
+			[]string{
+				"foo", "bar", "yoda", "jedi",
+			},
+			false,
+			false,
 		},
 	}
 	for _, tc := range tt {
