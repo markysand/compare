@@ -1,6 +1,8 @@
 package compare_test
 
 import (
+	"fmt"
+	"reflect"
 	"testing"
 
 	"github.com/markysand/compare"
@@ -136,4 +138,30 @@ func TestSliceUnsorted(t *testing.T) {
 			}
 		})
 	}
+}
+
+// With SliceUnsorted there is no need to construct
+// a sort function for the data type in question
+func ExampleSliceUnsorted() {
+	sliceA := []struct {
+		name    string
+		surname string
+	}{
+		{"Donald", "Duck"},
+		{"Mickey", "Mouse"},
+	}
+	sliceB := []struct {
+		name    string
+		surname string
+	}{
+		{"Mickey", "Mouse"},
+		{"Donald", "Duck"},
+	}
+	result1, _ := compare.SliceUnsorted(sliceA, sliceB)
+	result2 := reflect.DeepEqual(sliceA, sliceB)
+	fmt.Println(result1)
+	fmt.Println(result2)
+	// Output:
+	// true
+	// false
 }
