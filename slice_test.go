@@ -51,7 +51,7 @@ func TestSliceUnsorted(t *testing.T) {
 				bar int
 			}{
 				{
-					"hej",
+					"hi!",
 					22,
 				},
 			},
@@ -60,7 +60,7 @@ func TestSliceUnsorted(t *testing.T) {
 				bar  int
 			}{
 				{
-					"hej",
+					"hi!",
 					22,
 				},
 			},
@@ -74,7 +74,7 @@ func TestSliceUnsorted(t *testing.T) {
 				bar int
 			}{
 				{
-					"hej",
+					"hi!",
 					22,
 				},
 			},
@@ -83,7 +83,7 @@ func TestSliceUnsorted(t *testing.T) {
 				bar int
 			}{
 				{
-					"hej",
+					"hi!",
 					21,
 				},
 			},
@@ -97,7 +97,7 @@ func TestSliceUnsorted(t *testing.T) {
 				bar int
 			}{
 				{
-					"hej",
+					"hi!",
 					22,
 				},
 			},
@@ -106,7 +106,7 @@ func TestSliceUnsorted(t *testing.T) {
 				bar int
 			}{
 				{
-					"hej",
+					"hi!",
 					22,
 				},
 			},
@@ -202,11 +202,14 @@ func getSliceUtil(n int) []test {
 
 func BenchmarkSliceUnsorted(b *testing.B) {
 	const n = 1000
-	arg1, arg2 := getSliceUtil(1000), getSliceUtil(1000)
+	arg1, arg2 := getSliceUtil(n), getSliceUtil(n)
 	for i := 0; i < b.N; i++ {
-		_, err := compare.SliceUnsorted(arg1, arg2)
+		ok, err := compare.SliceUnsorted(arg1, arg2)
 		if err != nil {
 			b.Error(err.Error())
+		}
+		if ok == false {
+			b.Error("Failed to equal slices!")
 		}
 	}
 }
