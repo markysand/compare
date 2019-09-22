@@ -29,11 +29,16 @@ func TestSliceUnsorted(t *testing.T) {
 			false,
 		},
 		{
-			"Not slice",
+			"A not slice",
 			"alpha beta",
-			[]string{
-				"alpha", "beta",
-			},
+			[]string{"gamma", "delta"},
+			false,
+			true,
+		},
+		{
+			"B not slice",
+			[]string{"gamma", "delta"},
+			"alpha beta",
 			false,
 			true,
 		},
@@ -106,12 +111,22 @@ func TestSliceUnsorted(t *testing.T) {
 			true,
 			false,
 		}, {
-			"NOTE! Same length and members but with different doubles will return true",
+			"Same length and members but with different doubles will return false",
 			[]string{
 				"foo", "bar", "jedi", "yoda", "jedi",
 			},
 			[]string{
 				"foo", "bar", "yoda", "bar", "jedi",
+			},
+			false,
+			false,
+		}, {
+			"Same length and members with same doubles will return true",
+			[]string{
+				"foo", "bar", "jedi", "yoda", "jedi",
+			},
+			[]string{
+				"foo", "jedi", "yoda", "bar", "jedi",
 			},
 			true,
 			false,
