@@ -1,4 +1,4 @@
 # compare
 Golang utility to compare data
 
-Check <a href="https://godoc.org/github.com/markysand/compare">GoDoc</a> for reference.
+<a href="https://godoc.org/github.com/markysand/compare"><img src="https://godoc.org/github.com/markysand/compare?status.svg" alt="GoDoc"></a>
