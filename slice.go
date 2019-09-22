@@ -23,8 +23,9 @@ func SliceUnsorted(a, b interface{}) (bool, error) {
 		return false, nil
 	}
 	usedB := make([]bool, aLen)
+	var found bool
 	for i := 0; i < aV.Len(); i++ {
-		var found bool
+		found = false
 		for j := 0; j < bV.Len(); j++ {
 			if usedB[j] {
 				continue

@@ -2,7 +2,9 @@ package compare_test
 
 import (
 	"fmt"
+	"math/rand"
 	"reflect"
+	"strconv"
 	"testing"
 
 	"github.com/markysand/compare"
@@ -179,4 +181,32 @@ func ExampleSliceUnsorted() {
 	// Output:
 	// true
 	// false
+}
+
+type test struct {
+	foo string
+	bar int
+}
+
+func getSliceUtil(n int) []test {
+	res := make([]test, n)
+	for i, t := range res {
+		t.bar = i
+		t.foo = strconv.Itoa(i)
+	}
+	rand.Shuffle(n, func(i int, j int) {
+		res[i], res[j] = res[j], res[i]
+	})
+	return res
+}
+
+func BenchmarkSliceUnsorted(b *testing.B) {
+	const n = 1000
+	arg1, arg2 := getSliceUtil(1000), getSliceUtil(1000)
+	for i := 0; i < b.N; i++ {
+		_, err := compare.SliceUnsorted(arg1, arg2)
+		if err != nil {
+			b.Error(err.Error())
+		}
+	}
 }
