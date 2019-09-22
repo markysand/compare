@@ -9,7 +9,7 @@ import (
 
 /*SliceUnsorted will check whether two slices are equal when
 their sort order should not matter. Useful for testing, comparing
-results.*/
+results. Will return error if input is not slice*/
 func SliceUnsorted(a, b interface{}) (bool, error) {
 	if reflect.TypeOf(a).Kind() != reflect.Slice {
 		return false, errors.New(fmt.Sprint("Arg <a> is not a slice", a))
